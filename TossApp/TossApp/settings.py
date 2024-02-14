@@ -119,9 +119,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR.parent, 'my-toss', 'build'),
+    BASE_DIR.parent / 'my-toss' / 'build' / 'static',
 ]
 
 # staticfiles라는 이름의 폴더를 프로젝트 루트에 생성
