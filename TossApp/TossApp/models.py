@@ -9,6 +9,8 @@ class SidebarMenu(models.Model):
     parent_id = models.IntegerField(null=True, blank=True)
     target = models.CharField(max_length=255, blank=True, null=True)
     tenant_id = models.IntegerField()
+    class Meta:
+        db_table = 'sidebar_menu'
 
 
 class ContainerMetadata(models.Model):
