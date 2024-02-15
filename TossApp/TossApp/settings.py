@@ -125,7 +125,7 @@ STATICFILES_DIRS = [
 ]
 
 # staticfiles라는 이름의 폴더를 프로젝트 루트에 생성
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
