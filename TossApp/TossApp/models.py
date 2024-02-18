@@ -20,6 +20,8 @@ class ContainerMetadata(models.Model):
     company = models.CharField(max_length=255, blank=True, null=True)
     children = JSONField(blank=True, null=True)
     tenant_id = models.IntegerField()
+    class Meta:
+        db_table ='container_metadata'
 
 
 class TableMetadata(models.Model):
