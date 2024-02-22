@@ -17,11 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
-from .views import SidebarMenuListAPIView, ContainerMetadataListAPIView
-
+from .views import SidebarMenuListAPIView, ContainerMetadataListAPIView, TableMetadataListAPIView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/sidebar-menu/', SidebarMenuListAPIView.as_view(), name='sidebar-menu'),
     path('api/container-metadata/', ContainerMetadataListAPIView.as_view(), name='container-metadata'),
+    path('api/table-metadata/<str:code_name>/', TableMetadataListAPIView.as_view(), name='table_metadata'),
     re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]

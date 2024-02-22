@@ -13,6 +13,17 @@ interface ContainerMetadata {
   tenant_id: number;
 }
 
+interface TableMetadata {
+  id: number;
+  code_name: string;
+  title: string;
+  type?: string;
+  company?: string;
+  children?: any;
+  tenant_id: number;
+  columns?: any; // Define this according to the actual structure of 'columns'
+}
+
 // Styled Components
 const ContainerWrapper = styled.div`
   position: absolute;
