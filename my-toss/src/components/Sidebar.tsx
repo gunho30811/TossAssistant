@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import logo from '../Toss_Logo_Secondary_Gray.png';
-
+import { useNavigate } from 'react-router-dom';
 
 interface MenuItem {
   id: number;
@@ -52,33 +52,38 @@ const SidebarItem = styled.li`
 `;
 
 const Sidebar: React.FC = () => {
-    const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-  
-    useEffect(() => {
-      axios.get('/api/sidebar-menu/')
-        .then(response => {
-          setMenuItems(response.data);
-        })
-        .catch(error => {
-          console.error('There was an error fetching the menu items', error);
-        });
-    }, []);
+  const navigate = useNavigate();
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
 
-    return (
-        <SidebarContainer>
-          <TopSection>
-            <Logo src={logo} alt="Toss Logo" />
-            <AdminText>product admin</AdminText>
-          </TopSection>
-          <SidebarList>
-            {menuItems.map((item: MenuItem) => (
-              <SidebarItem key={item.id}>
-                {item.title}
-              </SidebarItem>
-            ))}
-          </SidebarList>
-        </SidebarContainer>
-      );
+  useEffect(() => {
+    axios.get('/api/sidebar-menu/')
+      .then(response => {
+        setMenuItems(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the menu items', error);
+      });
+  }, []);
+
+  const handleMenuItemClick = (code_name: string) => {
+    navigate(`/container/${code_name}`);
+  };
+
+  return (
+      <SidebarContainer>
+        <TopSection>
+          <Logo src={logo} alt="Toss Logo" />
+          <AdminText>product admin</AdminText>
+        </TopSection>
+        <SidebarList>
+          {menuItems.map((item: MenuItem) => (
+            <SidebarItem key={item.id} onClick={() => handleMenuItemClick(item.code_name)}>
+              {item.title}
+            </SidebarItem>
+          ))}
+        </SidebarList>
+      </SidebarContainer>
+    );
 };
 
 export default Sidebar;
