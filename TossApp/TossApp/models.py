@@ -32,7 +32,8 @@ class TableMetadata(models.Model):
     company = models.CharField(max_length=255, blank=True, null=True)
     columns = JSONField(blank=True, null=True)
     tenant_id = models.IntegerField()
-
+    class Meta:
+        db_table ='table_metadata'
 
 class FormMetadata(models.Model):
     code_name = models.CharField(max_length=255)
