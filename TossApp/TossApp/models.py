@@ -10,7 +10,7 @@ class SidebarMenu(models.Model):
     target = models.CharField(max_length=255, blank=True, null=True)
     tenant_id = models.IntegerField()
     class Meta:
-        db_table = 'sidebar_menu'
+        db_table ='sidebar_menu'
 
 
 class ContainerMetadata(models.Model):
